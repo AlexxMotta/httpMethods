@@ -5,6 +5,7 @@ app.use(express.json())
 
 
 app.get('/server', function(req,res){
+    //query params
     const {name, category} = req.query
     console.log(name,category)
     return res.json([
@@ -22,24 +23,16 @@ app.post('/server', function(req,res){
     ])
 })
 
+
 app.put('/server/:id', function(req,res){
-    console.log("put")
-
-
-    return res.json([
-        {name :'Alex Junior'},
-        {name :'Kauan Teixeira'},
-    ])
-})
-
-app.put('/server/:id/:name/:owner', function(req,res){
-    const {id,name,owner} = req.params
+    const {id} = req.params
+    const {name,owner} = req.body
     console.log(id,name,owner)
 
 
     return res.json([
-        {name :'Alex Junior'},
-        {name :'Kauan Teixeira'},
+        {name :name},
+        {owner :owner},
     ])
 })
 
